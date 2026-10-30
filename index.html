@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gold Shine · Presupuestos</title>
+  <meta name="description" content="Presupuestos de pulido y restauración de ópticas – Gold Shine">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="img/favicon-64.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="update-banner" class="update-banner" hidden>
+    <span>Hay una versión nueva de la app</span>
+    <button type="button" id="update-btn">Actualizar</button>
+  </div>
+
+  <header class="topbar">
+    <button type="button" class="topbar-logo-btn" data-action="go-home" aria-label="Ir al inicio"><img src="img/logo.png" alt="Gold Shine" class="topbar-logo" width="120" height="41"></button>
+    <button type="button" class="topbar-sub" data-action="go-home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>Inicio</button>
+  </header>
+
+  <main id="main" class="main" aria-live="polite"></main>
+
+  <div id="actionbar" class="actionbar" hidden></div>
+
+  <nav id="nav" class="nav" aria-label="Secciones">
+    <button type="button" data-tab="new"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Nuevo</span></button>
+    <button type="button" data-tab="history"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span>Historial</span></button>
+    <button type="button" data-tab="templates"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><span>Plantillas</span></button>
+    <button type="button" data-tab="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Ajustes</span></button>
+  </nav>
+
+  <section id="home" class="home play" aria-label="Inicio">
+    <canvas id="sparkles" class="sparkles" aria-hidden="true"></canvas>
+    <div class="home-beam" aria-hidden="true"></div>
+    <div class="home-inner">
+      <div class="home-logo rise" style="--d:.1s"><img src="img/logo.png" alt="Gold Shine"><span class="logo-sheen" aria-hidden="true"></span></div>
+      <p class="home-greet rise" style="--d:.55s" id="home-greet"></p>
+      <p class="home-welcome rise" style="--d:.75s" id="home-welcome">Bienvenido</p>
+      <h2 class="home-name" id="home-name" aria-label="Santiago"></h2>
+      <p class="home-sub rise" style="--d:1.5s">Presupuestos de pulido y restauración de ópticas</p>
+      <div class="home-tiles" id="home-tiles"></div>
+      <p class="home-foot rise" style="--d:2.3s" id="home-foot"></p>
+    </div>
+  </section>
+
+  <div id="overlay" class="overlay" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" id="sheet"></div>
+  </div>
+  <div id="confirm" class="overlay confirm" hidden>
+    <div class="sheet small" role="alertdialog" aria-modal="true">
+      <p id="confirm-msg"></p>
+      <div class="row">
+        <button type="button" class="btn dark block" id="confirm-no">Cancelar</button>
+        <button type="button" class="btn gold block" id="confirm-yes">Aceptar</button>
+      </div>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+
+  <script src="vendor/pdf-lib.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/pdf.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
